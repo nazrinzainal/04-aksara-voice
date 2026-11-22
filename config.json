@@ -1,0 +1,12 @@
+{
+  "host": "127.0.0.1",
+  "port": 7788,
+  "max_chars": 3000,
+  "history_limit": 60,
+  "kokoro_model": "models/kokoro/kokoro-v1.0.onnx",
+  "kokoro_voices": "models/kokoro/voices-v1.0.bin",
+  "chatterbox_device": "auto",
+  "chatterbox_dir": "models/chatterbox",
+  "default_voice_ms": "chatterbox:ms-malaysia-f",
+  "default_voice_en": "kokoro:af_heart"
+}

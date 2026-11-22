@@ -1,0 +1,4 @@
+# Test-only tools. Safe to add to the existing .venv: neither touches numpy/torch.
+#   .venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+pytest==8.4.2
+playwright==1.55.0   # browser smoke test uses the installed desktop browser; no browser download

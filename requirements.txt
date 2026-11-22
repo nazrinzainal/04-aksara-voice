@@ -1,0 +1,21 @@
+# Aksara Voice - pinned, tested versions (Python 3.12, Windows, CPU).
+#
+# Do NOT run "pip install -r requirements.txt" on an empty venv: chatterbox-tts 0.1.7 declares
+# numpy<2 while kokoro-onnx needs numpy>=2, so pip's resolver refuses the set. Install in the
+# order given in README.md -> "Setup" (Chatterbox + CPU torch first, then the rest, then numpy
+# 2.4.2 last with --no-deps). This file records the versions that are known to work together.
+
+# Chatterbox + Perth watermarker (perth needs pkg_resources, removed in setuptools 81)
+chatterbox-tts==0.1.7
+torch==2.6.0            # installed: 2.6.0+cu124 (GPU) from https://download.pytorch.org/whl/cu124
+torchaudio==2.6.0       # same index; CPU fallback build: --index-url https://download.pytorch.org/whl/cpu
+setuptools==80.9.0
+
+# Core studio
+edge-tts==7.3.1
+kokoro-onnx==0.6.1
+mutagen==1.48.1
+
+# Kokoro requires numpy>=2; Chatterbox declares numpy<2 but runs correctly on 2.4.
+# Install this LAST:  pip install numpy==2.4.2 --no-deps
+numpy==2.4.2

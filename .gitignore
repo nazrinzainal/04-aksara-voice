@@ -1,0 +1,12 @@
+.venv/
+data/
+models/
+__pycache__/
+*.pyc
+.audit-backup/
+.pytest_cache/
+logs/
+
+# local-only: shortcuts embed this PC's folder path; private notes and old screenshots
+*.lnk
+private/

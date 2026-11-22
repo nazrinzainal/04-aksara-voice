@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Aksara Voice · Neural Voice Studio</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="space" aria-hidden="true">
+    <div class="stars"></div>
+    <div class="stars stars-far"></div>
+    <div class="earth"><div class="earth-lights"></div></div>
+    <div class="moon"></div>
+    <div class="nebula nebula-a"></div>
+    <div class="nebula nebula-b"></div>
+  </div>
+
+  <div class="app">
+    <aside class="sidebar" aria-label="Studio navigation">
+      <a class="brand" href="#studio" data-scroll="studio" aria-label="Aksara Voice studio">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="brand-text">
+          <span class="brand-name">AKSARA <b>VOICE</b></span>
+          <p>Neural voice studio</p>
+        </span>
+      </a>
+
+      <nav class="side-nav" aria-label="Main">
+        <button type="button" class="active" data-scroll="studio" aria-label="Studio" aria-current="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h4.5v-5.5h4V20h4.5V9.5"/></svg>
+          <span>Studio</span>
+        </button>
+        <button type="button" data-scroll="library" aria-label="Voice Library">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4M8 7v10M12 4v16M16 7v10M20 10v4"/></svg>
+          <span>Voice Library</span>
+        </button>
+        <button type="button" class="soon" data-coming="Projects" aria-disabled="true" aria-label="Projects (coming soon)" title="Projects — coming soon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5a2 2 0 0 1 2-2h4.5l2 2H19a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          <span>Projects</span><em class="soon-badge" aria-hidden="true">Soon</em>
+        </button>
+        <button type="button" data-scroll="history-section" aria-label="History">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.5-6"/><path d="M3.5 4v4h4"/><path d="M12 8v4.5l3 2"/></svg>
+          <span>History</span>
+        </button>
+        <button type="button" class="soon" data-coming="Settings" aria-disabled="true" aria-label="Settings (coming soon)" title="Settings — coming soon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.4-2.3 1a7 7 0 0 0-1.7-1L14.5 3h-5l-.4 3a7 7 0 0 0-1.7 1l-2.3-1-2 3.4 2 1.5a7 7 0 0 0 0 2l-2 1.5 2 3.4 2.3-1a7 7 0 0 0 1.7 1l.4 3h5l.4-3a7 7 0 0 0 1.7-1l2.3 1 2-3.4-2-1.5a7 7 0 0 0 .1-1z"/></svg>
+          <span>Settings</span><em class="soon-badge" aria-hidden="true">Soon</em>
+        </button>
+      </nav>
+
+      <div class="side-label" id="engine-label">Engine status</div>
+      <div class="engine-status" role="status" aria-labelledby="engine-label">
+        <span class="pill" id="edge-pill" title="Aksara Cloud — cloud voices (internet required)"><i></i>Aksara Cloud</span>
+        <span class="pill" id="kokoro-pill" title="Aksara Local — English voices on this PC"><i></i>Aksara Local</span>
+        <span class="pill" id="chatterbox-pill" title="Aksara HD — natural Malay voices on this PC"><i></i>Aksara HD</span>
+      </div>
+
+      <div class="pro-card">
+        <span class="pro-spark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2c.6 5 2.9 7.4 8 8-5.1.6-7.4 3-8 8-.6-5-2.9-7.4-8-8 5.1-.6 7.4-3 8-8z"/></svg></span>
+        <h3>Aksara HD</h3>
+        <p>Natural Malay voices with a Malaysian accent — runs on this PC.</p>
+        <button type="button" id="side-guide">Voice guide <span aria-hidden="true">→</span></button>
+      </div>
+
+      <div class="side-foot">
+        <span>v2.3.0</span>
+        <span>Built with <i aria-hidden="true">♥</i> for creators</span>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="hero" id="studio">
+        <div class="hero-copy">
+          <h1>Turn Text into<br><em>Lifelike Speech</em></h1>
+          <p>Powered by local neural voices. Studio quality, Malay &amp; English.</p>
+        </div>
+        <div class="hero-actions">
+          <span class="fast-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m13 2-8 11h6l-1 9 8-12h-6z"/></svg> Local AI</span>
+          <div class="lang-switch" id="lang-tabs" role="tablist" aria-label="Language">
+            <svg class="globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.7 5.6 3.7 9s-1.2 6.4-3.7 9c-2.5-2.6-3.7-5.6-3.7-9S9.5 5.6 12 3z"/></svg>
+            <button type="button" class="active" data-lang="ms" role="tab" aria-selected="true" title="Bahasa Melayu">BM</button>
+            <button type="button" data-lang="en" role="tab" aria-selected="false" title="English">EN</button>
+          </div>        </div>
+      </header>
+
+      <main class="studio">
+        <div class="workspace-left">
+          <nav class="workspace-tabs" aria-label="Workspace">
+            <button type="button" class="active" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4M8 7v10M12 4v16M16 7v10M20 10v4"/></svg> Text to Speech</button>
+            <button type="button" class="soon" data-coming="Voice Cloning" aria-disabled="true" title="Voice Cloning — coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg> Voice Cloning <em class="soon-badge">Soon</em></button>
+            <button type="button" class="soon" data-coming="Voice Conversion" aria-disabled="true" title="Voice Conversion — coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h14l-3.5-3.5M20 16H6l3.5 3.5"/></svg> Voice Conversion <em class="soon-badge">Soon</em></button>
+            <button type="button" class="soon" data-coming="Studio Mix" aria-disabled="true" title="Studio Mix — coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4v16M12 4v16M18 4v16M3.5 9h5M9.5 15h5M15.5 7h5"/></svg> Studio Mix <em class="soon-badge">Soon</em></button>
+          </nav>
+
+          <section class="compose panel" aria-label="Text to speech">
+            <div class="panel-head">
+              <div class="panel-title">
+                <span class="panel-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg></span>
+                <div>
+                  <h2>Your Script</h2>
+                  <small id="engine-hint">Aksara HD · natural Malay, on this PC</small>
+                </div>
+              </div>
+              <div class="panel-actions">
+                <button type="button" class="ghost" id="sample"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.5 3.8 2.2 5.5 6 6-3.8.5-5.5 2.2-6 6-.5-3.8-2.2-5.5-6-6 3.8-.5 5.5-2.2 6-6z"/></svg>Sample</button>
+                <button type="button" class="ghost" id="clear"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M9.5 7V4.5h5V7M7 7l1 13h8l1-13"/></svg>Clear</button>
+                <button type="button" class="ghost" id="paste" title="Paste from clipboard (or Ctrl+V in the text box)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="11" height="15" rx="2"/><path d="M9 3h7a3 3 0 0 1 3 3v10"/></svg>Paste</button>
+                <button class="voice-chip" id="voice-chip" type="button" title="Jump to the voice library" aria-label="Selected voice — jump to the voice library">
+                  <span class="mini-avatar" id="sel-avatar">P</span>
+                  <span class="vc-text"><b id="sel-name">Melayu Perempuan</b><em id="sel-meta">Malay · Local</em></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="text-shell">
+              <textarea id="text" maxlength="3000" spellcheck="true" aria-label="Script" aria-describedby="count long-warn" placeholder="Taip atau tampal teks di sini…"></textarea>
+              <div class="long-warn" id="long-warn" role="status" hidden></div>
+            </div>
+            <div class="text-meta">
+              <span id="count">0 / 3,000</span>
+              <span class="sep" aria-hidden="true">·</span>
+              <span id="estimate">≈ 0:00 audio</span>
+              <span class="spacer"></span>
+              <span class="text-hint"><kbd>Ctrl</kbd> + <kbd>Enter</kbd> to generate</span>
+            </div>
+
+            <div class="control-grid">
+              <label class="control control-speed">
+                <span class="control-top"><span class="c-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m13 2-8 11h6l-1 9 8-12h-6z"/></svg></span><span class="c-label">Speed</span><b id="speed-value">1.00×</b></span>
+                <input id="speed" type="range" min="0.7" max="1.3" step="0.01" value="1">
+              </label>
+              <label class="control control-pitch" id="pitch-box">
+                <span class="control-top"><span class="c-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h3l2.5-6 4 12 2.5-6h6"/></svg></span><span class="c-label">Pitch</span><b id="pitch-value">0 Hz</b></span>
+                <input id="pitch" type="range" min="-20" max="20" step="1" value="0">
+              </label>
+              <label class="control control-express" id="express-box" hidden>
+                <span class="control-top"><span class="c-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h1.5M7 8.5v7M11 5v14M15 8.5v7M19 11v2"/></svg></span><span class="c-label">Expressiveness</span><b id="express-value">0.50</b></span>
+                <input id="express" type="range" min="0.2" max="0.9" step="0.01" value="0.5">
+              </label>
+              <label class="control control-stability" id="stability-box">
+                <span class="control-top"><span class="c-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="c-label">Stability</span><b id="stability-value">0.90</b></span>
+                <input id="stability" type="range" min="0" max="1" step="0.01" value="0.9">
+              </label>
+            </div>
+
+            <div class="generate-row">
+              <svg class="gen-streaks" viewBox="0 0 800 90" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="streak-l" x1="0" x2="1"><stop offset="0" stop-color="#3ee8ff" stop-opacity="0"/><stop offset=".7" stop-color="#3ee8ff" stop-opacity=".9"/><stop offset="1" stop-color="#7c6bff" stop-opacity=".2"/></linearGradient>
+                  <linearGradient id="streak-r" x1="0" x2="1"><stop offset="0" stop-color="#9a6bff" stop-opacity=".2"/><stop offset=".3" stop-color="#b56bff" stop-opacity=".9"/><stop offset="1" stop-color="#5ab8ff" stop-opacity="0"/></linearGradient>
+                </defs>
+                <path d="M0 52 C120 30 210 70 330 44" stroke="url(#streak-l)" stroke-width="2" fill="none"/>
+                <path d="M20 62 C140 44 230 78 330 52" stroke="url(#streak-l)" stroke-width="1.2" fill="none" opacity=".7"/>
+                <path d="M30 40 C150 58 240 26 330 38" stroke="url(#streak-l)" stroke-width="1" fill="none" opacity=".5"/>
+                <path d="M470 44 C590 70 680 30 800 52" stroke="url(#streak-r)" stroke-width="2" fill="none"/>
+                <path d="M470 52 C570 78 660 44 780 62" stroke="url(#streak-r)" stroke-width="1.2" fill="none" opacity=".7"/>
+                <path d="M470 38 C560 26 650 58 770 40" stroke="url(#streak-r)" stroke-width="1" fill="none" opacity=".5"/>
+              </svg>
+              <button class="generate" id="generate" type="button" disabled>
+                <span class="gen-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg></span>
+                <span class="gen-label">Generate Voice</span>
+                <span class="gen-hint">Ctrl ↵</span>
+                <span class="spinner" hidden aria-hidden="true"></span>
+              </button>
+              <button class="cancel-gen" id="cancel-gen" type="button" hidden title="Cancel generation">Cancel</button>
+              <span class="sr-only" id="gen-status" role="status" aria-live="polite"></span>
+            </div>
+
+            <div class="player" id="player" hidden>
+              <button class="play-btn" id="play" type="button" aria-label="Play">
+                <svg class="ico-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="ico-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+              </button>
+              <div class="player-main">
+                <canvas id="wave" height="64" aria-hidden="true"></canvas>
+                <input class="seek" id="seek" type="range" min="0" max="1000" value="0" aria-label="Seek">
+                <div class="player-meta">
+                  <span id="player-voice"></span>
+                </div>
+              </div>
+              <span class="player-time" id="time">0:00 / 0:00</span>
+              <div class="player-actions">
+                <button class="icon-btn" id="mute" type="button" title="Mute" aria-label="Mute" aria-pressed="false">
+                  <svg class="ico-vol" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg>
+                  <svg class="ico-muted" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+                </button>
+                <input class="volume" id="volume" type="range" min="0" max="1" step="0.01" value="0.9" aria-label="Volume">
+                <a class="icon-btn" id="download" download title="Download audio" aria-label="Download audio" aria-disabled="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 20h14"/></svg>
+                </a>
+                <button class="icon-btn" id="regen" type="button" title="Generate again" aria-label="Generate again">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="player player-empty" id="player-empty">
+              <span class="empty-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+              <div class="empty-copy">
+                <b>Your audio will appear here</b>
+                <small>Generate a voice to listen, download and fine-tune.</small>
+              </div>
+              <span class="empty-wave" aria-hidden="true"></span>
+            </div>
+          </section>
+        </div>
+
+        <aside class="library panel" id="library" aria-label="Voice library">
+          <div class="library-head">
+            <span class="lib-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="8.5" y="2.5" width="7" height="12" rx="3.5"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg></span>
+            <div class="library-title">
+              <h2>Voice Library</h2>
+              <p id="voice-count">Loading voices…</p>
+            </div>
+          </div>
+
+          <label class="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+            <input id="search" type="search" placeholder="Search voices…" autocomplete="off" aria-label="Search voices">
+          </label>
+
+          <div class="filters" id="filters" role="group" aria-label="Filter voices">
+            <button type="button" class="active" data-gender="all" aria-pressed="true">All</button>
+            <button type="button" data-gender="female" aria-pressed="false">Female</button>
+            <button type="button" data-gender="male" aria-pressed="false">Male</button>
+            <button type="button" data-gender="local" aria-pressed="false" title="Voices that run on this PC (offline)">Local</button>
+          </div>
+
+          <div class="voice-list" id="voices" aria-label="Voices"></div>
+          <div class="library-extra" id="library-extra"></div>
+          <div class="library-note" id="library-note" hidden></div>
+        </aside>
+      </main>
+
+      <section class="history-section panel" id="history-section" aria-label="Recent generations">
+        <div class="history-head">
+          <span class="hist-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 12a8.5 8.5 0 1 0 2.5-6"/><path d="M3.5 4v4h4"/><path d="M12 8v4.5l3 2"/></svg></span>
+          <div class="history-title">
+            <h2>Recent Generations</h2>
+            <p>Your latest creations, kept on this PC</p>
+          </div>
+          <span class="spacer"></span>
+          <button type="button" class="ghost" id="clear-history">Clear all</button>
+          <button type="button" class="link-btn" id="history-toggle" hidden>View all <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="history-list" id="history"></div>
+      </section>
+
+      <footer class="footer">
+        <span>Neural Voice Studio</span>
+        <span class="dot">·</span>
+        <span>Aksara Voice 2.3</span>
+      </footer>
+    </div>
+  </div>
+
+  <audio id="audio" preload="metadata" hidden></audio>
+  <audio id="preview-audio" preload="auto" hidden></audio>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
